@@ -1,0 +1,172 @@
+
+/*
+Milestone 3
+Your program should take in the name of the file and a single query of any type, and print all the lines that match that single query.
+*/
+
+
+
+
+import java.io.IOException;
+import java.nio.file.*;
+
+
+/*
+class FileHelper {
+    
+    //Takes a path to a file and returns all of the lines in the file as an
+    //array of strings, printing an error if it failed.
+    
+    static String[] getLines(String path) {
+        try {
+            return Files.readAllLines(Paths.get(path)).toArray(String[]::new);
+        }
+        catch(IOException e) {
+            System.err.println("Error reading file " + path + ": " + e);
+            return new String[]{"Error reading file " + path + ": " + e};
+        }
+    }
+}
+
+*/
+
+
+
+/*
+interface Query{
+    boolean matches(String s);
+    Query readQuery(String q); //takes query string and produces a Query
+}
+
+class Length
+
+interface Transform{
+    String transform(String s);
+    Transform readTransform(String t); //takes a transform string for a single transform and produces a Transform
+}
+*/
+
+
+class rough3{
+
+
+    /*
+    //returns true is all the queries match a given string
+    boolean matchesAll(Query[] qs, String s) {
+    }
+
+    //returns result of applying all the Transforms in ts to s in order
+    String applyAll(Transform[] ts, String s) {
+    }
+    */
+
+
+    public static void main(String[] args) throws IOException{
+        String contents = Files.readString(Paths.get(args[0]));
+        String[] lines = contents.split("\n");
+
+        //later do if (args[1].contains("contains") && INDEXOF(  ) == _____)
+        //CASE SENSITIVE
+        if (args[1].contains("contains")) {
+            String keyword = args[1].substring(args[1].indexOf("=") + 2, args[1].length() - 1); //+2 to account for starting ' and -1 to account for ending '
+            for (String line : lines) {
+                if (line.contains(keyword)) {
+                    System.out.println(line);
+                }
+            }
+        }
+
+        if (args[1].contains("length")) {
+            for (String line : lines) {
+                //System.out.println(line.length());
+                String len = args[1].substring(args[1].indexOf("=") + 1, args[1].length());
+                //System.out.println(len);  
+                if (line.length() == Integer.parseInt(len)) {
+                    System.out.println(line);
+                }
+            }
+        }
+        
+        if (args[1].contains("greater")) {
+            for (String line : lines) {
+                String len = args[1].substring(args[1].indexOf("=") + 1, args[1].length());  
+                if (line.length() > Integer.parseInt(len)) {
+                    System.out.println(line);
+                }
+            }
+        }
+        
+        if (args[1].contains("less")) {
+            for (String line : lines) {
+                String len = args[1].substring(args[1].indexOf("=") + 1, args[1].length());  
+                if (line.length() < Integer.parseInt(len)) {
+                    System.out.println(line);
+                }
+            }
+        }
+        
+        if (args[1].contains("starts")) {
+            String keyword = args[1].substring(args[1].indexOf("=") + 2, args[1].length() - 1); //+2 to account for starting ' and -1 to account for ending '
+            for (String line : lines) {
+                //if (line.substring(0, keyword.length()) == keyword) {
+                if (line.startsWith(keyword)) {
+                    System.out.println(line);
+                }
+            }
+        }
+        
+        if (args[1].contains("ends")) {
+            String keyword = args[1].substring(args[1].indexOf("=") + 2, args[1].length() - 1); //+2 to account for starting ' and -1 to account for ending '
+            for (String line : lines) {
+                if (line.endsWith(keyword)) {
+                    System.out.println(line);
+                }
+            }
+        }
+        
+        /*
+        //not(<some non-not query>) which matches lines that do not match the inner query
+        if (args[1].contains("not")) {
+            
+        }
+        */
+
+
+        /*
+
+        if (query.startsWith("not")) { 
+            String inner_query = query.substring(query.indexOf("(") + 1, query.indexOf(")"));
+            List<String> inner_query_result = query_processor(inner_query, lines);
+            lines.removeAll(inner_query_result);
+            
+
+            //note, there can be multiple of the same line in a file
+
+
+            //-----------------------------------------------
+            List<String> return_lines = new ArrayList<String>();
+
+            BELOW DOESN'T WORK
+
+            for (int i = 0; i < inner_query_result.size(); i++) {
+                for (int j = 0; j < lines.size(); i++) {
+                    if (lines.indexOf(inner_query_result.get(i)) == -1) {
+                        return_lines.add(lines.get(j));
+                    }
+                }
+            }
+
+            return return_lines;
+            //-----------------------------------------------
+            
+        }
+
+        
+        */
+        
+
+
+        return;
+
+    }//end of main
+}

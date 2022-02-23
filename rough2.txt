@@ -1,0 +1,109 @@
+
+import java.io.IOException;
+import java.nio.file.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Scanner;
+
+
+
+public class StringSearch{
+
+    /*
+    //returns true is all the queries match a given string
+    boolean matchesAll(Query[] qs, String s) {
+    }
+
+    //returns result of applying all the Transforms in ts to s in order
+    String applyAll(Transform[] ts, String s) {
+    }
+    */
+
+    public StringSearch () throws IOException {
+
+        Scanner scanner = new Scanner(System.in);
+        String[] commands = scanner.next().split(" ");
+        scanner.close();
+        String contents = Files.readString(Paths.get(commands[0]));
+        String[] lines_array = contents.split("\n");
+        List<String> lines = new ArrayList<String>();
+        lines = Arrays.asList(lines_array);
+        print_result(lines);
+
+    
+
+    }
+
+
+    /*
+    The main method should expect 3 command-line arguments:
+    $ java StringSearch "<file>" "<query>" "<transform>"
+    The overall goal of StringSearch is to take a file of text, search for lines in the file based on some criteria, then print out the matching lines after transforming them somehow.
+    */
+    public static void main(String[] args) throws IOException{
+        /*
+        String contents = Files.readString(Paths.get(args[0]));
+        String[] lines_array = contents.split("\n");
+        List<String> lines = new ArrayList<String>();
+        lines = Arrays.asList(lines_array);
+        print_result(lines);
+        */
+        new StringSearch();
+
+        
+
+    }//end of main
+
+    /*
+    String ampersand_seperator() {
+
+    }
+    */
+
+    public void print_result(List<String> res) {
+        for (String line : res) {
+            System.out.println(line);
+        }
+    }
+
+}//end of StringSearch class
+
+
+/*
+
+
+
+class Query{
+    String queries; //"&" seperated String of queries
+    List<String> lines;
+
+    //constructor
+    Query(String q, List<String> a) { //pass in args[1] and lines
+        queries = q;
+        lines = a;
+    }
+
+    //calls the query methods in order
+    void query_order() {
+
+    }
+
+    List<String> contains()
+
+
+}//end of Query class
+
+
+class Transform{
+    String transforms; //"&" seperated String of transforms
+    List<String> lines;
+
+    Transform(String t, List<String> a) { //pass in args[2]
+        transforms = t;
+        lines = a;
+    }
+}
+
+  
+*/
