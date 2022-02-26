@@ -6,3 +6,4 @@ The file `CSE11 PA7 - Assignment Description` gives example test cases and expla
 Date Completed: November 16, 2021
 
 xfun::embed_file("CSE 11 PA7 – Assignment Description.pdf")
+[CSE 11 PA7 – Assignment Description.pdf](https://github.com/doraemon127/String-Search-and-Manipulation/files/8145592/CSE.11.PA7.Assignment.Description.pdf)
